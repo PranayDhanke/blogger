@@ -1,0 +1,52 @@
+[
+  {
+    "id": 11,
+    "title": "Exploring Hidden Gems in the City",
+    "slug": "exploring-hidden-gems",
+    "author": "Olivia Walker",
+    "date": "November 18, 2024",
+    "authorImage": "https://i.pravatar.cc/150?img=11",
+    "imageUrl": "https://picsum.photos/800/400?random=11",
+    "content": "Uncover the secret spots and hidden gems within the cityscape. From quaint coffee shops to tucked-away bookstores, embark on an urban adventure."
+  },
+  {
+    "id": 12,
+    "title": "Journey Through Time: Historical Marvels",
+    "slug": "historical-marvels",
+    "author": "Victor Thompson",
+    "date": "December 8, 2024",
+    "authorImage": "https://i.pravatar.cc/150?img=12",
+    "imageUrl": "https://picsum.photos/800/400?random=12",
+    "content": "Step back in time and witness the grandeur of historical marvels. Explore ancient castles, archaeological wonders, and the stories engraved in the past."
+  },
+  {
+    "id": 13,
+    "title": "Epicurean Delights: A Culinary Expedition",
+    "slug": "culinary-expedition",
+    "author": "Gabriel Ramirez",
+    "date": "January 25, 2025",
+    "authorImage": "https://i.pravatar.cc/150?img=13",
+    "imageUrl": "https://picsum.photos/800/400?random=13",
+    "content": "Embark on a culinary expedition featuring diverse flavors and gastronomic wonders. From street food adventures to fine dining experiences, savor the essence of exquisite dishes."
+  },
+  {
+    "id": 14,
+    "title": "Innovation in Sustainable Living",
+    "slug": "sustainable-living-innovation",
+    "author": "Eva Anderson",
+    "date": "February 14, 2025",
+    "authorImage": "https://i.pravatar.cc/150?img=14",
+    "imageUrl": "https://picsum.photos/800/400?random=14",
+    "content": "Discover groundbreaking innovations in sustainable living. From eco-friendly technologies to sustainable practices, join the movement towards a greener and more sustainable future."
+  },
+  {
+    "id": 15,
+    "title": "Mindful Living: Balancing Work and Wellness",
+    "slug": "mindful-living-work-wellness",
+    "author": "Natalie Cohen",
+    "date": "March 10, 2025",
+    "authorImage": "https://i.pravatar.cc/150?img=15",
+    "imageUrl": "https://picsum.photos/800/400?random=15",
+    "content": "Explore the art of mindful living by finding the perfect balance between work and wellness. Dive into practical tips, mindfulness exercises, and strategies for a harmonious lifestyle."
+  }
+]

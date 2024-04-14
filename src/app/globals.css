@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .signinlabel {
+        @apply block text-gray-700 text-sm font-bold
+    }
+
+    .signininput {
+        @apply w-full p-2 border rounded-md focus:outline-none focus:border-blue-500
+    }
+
+    .postinput {
+        @apply w-full px-3 py-2 border rounded-md focus:outline-none
+    }
+}
