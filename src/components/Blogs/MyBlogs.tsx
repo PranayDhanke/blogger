@@ -54,11 +54,11 @@ const MyBlog = () => {
               const owdata1 = await res.json();
               const newdata1 = await owdata1.data;
 
-              if (newdata1 == '') {
-                setpresent(false)
+              if (newdata1 == "") {
+                setpresent(false);
               } else {
                 setBlogs(newdata1);
-                setpresent(true)
+                setpresent(true);
               }
             } catch (error) {
               toast.error("Error while fetching data");
@@ -91,7 +91,7 @@ const MyBlog = () => {
 
         if (res.ok) {
           toast.success("Blog Deleted Successfully");
-          router.refresh()
+          router.refresh();
         } else {
           toast.error("Error While Delete");
         }
@@ -134,11 +134,13 @@ const MyBlog = () => {
                       <span className="text-xs ml-2 mt-2">
                         {blog.createdAt}
                       </span>
-                      <p className="text-gray-600 mt-5 mb-4">{blog.content}</p>
-                      <Link
-                        href={`/posts/[id]`}
-                        as={`/posts/${blog._id}`}
-                      >
+                      <div className="text-gray-600 mt-5 mb-4">
+                        <p className="max-w-full max-h-24 overflow-hidden">
+                          {blog.content}
+                        </p>
+                        ...
+                      </div>
+                      <Link href={`/posts/[id]`} as={`/posts/${blog._id}`}>
                         <span className="text-blue-500 hover:underline">
                           Read more
                         </span>

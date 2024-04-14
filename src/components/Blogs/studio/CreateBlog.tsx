@@ -9,6 +9,7 @@ export default function createBlog() {
   const router = useRouter();
 
   const [username, setusername] = useState("");
+  const [profilePhoto , setProfilePhoto] = useState("");
 
   const [formData, setFormData] = useState({
     title: "",
@@ -31,6 +32,7 @@ export default function createBlog() {
           const owdata = await res.json();
           const newdata = await owdata.data;
           setusername(newdata.username);
+          setProfilePhoto(newdata.image)
         } catch (error) {
           toast.error("Username not found");
         }
@@ -56,7 +58,7 @@ export default function createBlog() {
           imageUrl: formData.imageUrl,
           title: formData.title,
           slug: formData.subtitle,
-          authorImage: "jbfiwebjifubew",
+          authorImage: profilePhoto,
           author: username,
           content: formData.content,
         }),
