@@ -24,7 +24,7 @@ export default function CreateBlog() {
         const email = authUser.email;
         try {
           const res = await fetch(
-            `http://localhost:3000/api/User/getuser/${email}`,
+            `/api/User/getuser/${email}`,
             {
               method: "GET",
             }
@@ -49,7 +49,7 @@ export default function CreateBlog() {
   const senddata = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/api/Posts/CreatePost", {
+      const res = await fetch("/api/Posts/CreatePost", {
         method: "POST",
         headers: {
           "content-type": "application/json",

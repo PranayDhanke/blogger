@@ -21,7 +21,7 @@ const Profile = () => {
         const email = authUser.email;
         try {
           const res = await fetch(
-            `http://localhost:3000/api/User/getuser/${email}`,
+            `/api/User/getuser/${email}`,
             {
               method: "GET",
             }
@@ -73,7 +73,7 @@ const Profile = () => {
     if (username !== "" && profilePhoto !== null) {
         if (isFile(profilePhoto) && profilePhoto.size < 50000) {
         try {
-          const res = await fetch("http://localhost:3000/api/User/Update", {
+          const res = await fetch("/api/User/Update", {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -45,7 +45,7 @@ const Usersignin = () => {
               async () => {
                 try {
                   const res = await fetch(
-                    "http://localhost:3000/api/User/Create",
+                    "/api/User/Create",
                     {
                       method: "POST",
                       headers: {

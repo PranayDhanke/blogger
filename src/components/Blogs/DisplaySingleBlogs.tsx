@@ -22,7 +22,7 @@ export default function DisplaySingleblogs({ id }: { id: any }) {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `http://localhost:3000/api/Posts/ViewTitlePost/${id}`,
+          `/api/Posts/ViewTitlePost/${id}`,
           {
             method: "GET",
             headers: {

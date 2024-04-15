@@ -31,7 +31,7 @@ const MyBlog = () => {
         const email = authUser.email;
         try {
           const res = await fetch(
-            `http://localhost:3000/api/User/getuser/${email}`,
+            `/api/User/getuser/${email}`,
             {
               method: "GET",
             }
@@ -45,7 +45,7 @@ const MyBlog = () => {
           } else {
             try {
               const res = await fetch(
-                `http://localhost:3000/api/Posts/ViewMy/${newdata.username}`,
+                `/api/Posts/ViewMy/${newdata.username}`,
                 {
                   method: "GET",
                 }
@@ -79,7 +79,7 @@ const MyBlog = () => {
     try {
       const comformbox = window.confirm("You want to delete this blog");
       if (comformbox) {
-        const res = await fetch(`http://localhost:3000/api/Posts/DeletePost/`, {
+        const res = await fetch(`/api/Posts/DeletePost/`, {
           method: "POST",
           headers: {
             "content-type": "application/json",

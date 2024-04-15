@@ -28,7 +28,7 @@ const EditBlog = ({ id }: { id: String }) => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `http://localhost:3000/api/Posts/ViewTitlePost/${id}`,
+          `/api/Posts/ViewTitlePost/${id}`,
           {
             method: "GET",
             headers: {
@@ -57,7 +57,7 @@ const EditBlog = ({ id }: { id: String }) => {
         const email = authUser.email;
         try {
           const res = await fetch(
-            `http://localhost:3000/api/User/getuser/${email}`,
+            `/api/User/getuser/${email}`,
             {
               method: "GET",
             }

@@ -34,7 +34,7 @@ const Navbar = () => {
         const email = authUser.email;
         try {
           const res = await fetch(
-            `http://localhost:3000/api/User/getuser/${email}`,
+            `/api/User/getuser/${email}`,
             {
               method: "GET",
             }
