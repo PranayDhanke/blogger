@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 import React, { ChangeEvent, FormEvent, ReactEventHandler, SyntheticEvent, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
-export default function createBlog() {
-  const router = useRouter();
+export default function CreateBlog() {
+  const Router = useRouter();
 
-  const [username, setusername] = useState("");
-  const [profilePhoto , setProfilePhoto] = useState("");
+  const [Username, Setusername] = useState("");
+  const [ProfilePhoto , SetProfilePhoto] = useState("");
 
-  const [formData, setFormData] = useState({
+  const [FormData, SetFormData] = useState({
     title: "",
     subtitle: "",
     content: "",
@@ -31,8 +31,8 @@ export default function createBlog() {
           );
           const owdata = await res.json();
           const newdata = await owdata.data;
-          setusername(newdata.username);
-          setProfilePhoto(newdata.image)
+          Setusername(newdata.username);
+          SetProfilePhoto(newdata.image)
         } catch (error) {
           toast.error("Username not found");
         }
@@ -43,7 +43,7 @@ export default function createBlog() {
   }, []);
 
   const handleChange = (e:any) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    SetFormData({ ...FormData, [e.target.name]: e.target.value });
   };
 
   const senddata = async (e: SyntheticEvent) => {
@@ -55,17 +55,17 @@ export default function createBlog() {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          imageUrl: formData.imageUrl,
-          title: formData.title,
-          slug: formData.subtitle,
-          authorImage: profilePhoto,
-          author: username,
-          content: formData.content,
+          imageUrl: FormData.imageUrl,
+          title: FormData.title,
+          slug: FormData.subtitle,
+          authorImage: ProfilePhoto,
+          author: Username,
+          content: FormData.content,
         }),
       });
       if (res.ok) {
         toast.success("Blog Created");
-        router.push("/studio");
+        Router.push("/studio");
       } else {
         toast.error("Something went wrong");
       }
@@ -87,7 +87,7 @@ export default function createBlog() {
             type="text"
             id="title"
             name="title"
-            value={formData.title}
+            value={FormData.title}
             onChange={handleChange}
             className="postinput"
             required
@@ -100,7 +100,7 @@ export default function createBlog() {
             type="text"
             id="subtitle"
             name="subtitle"
-            value={formData.subtitle}
+            value={FormData.subtitle}
             onChange={handleChange}
             className="postinput"
             required
@@ -113,7 +113,7 @@ export default function createBlog() {
             id="content"
             name="content"
             rows={4}
-            value={formData.content}
+            value={FormData.content}
             onChange={handleChange}
             className="postinput"
             required
@@ -126,7 +126,7 @@ export default function createBlog() {
             type="text"
             id="imageUrl"
             name="imageUrl"
-            value={formData.imageUrl}
+            value={FormData.imageUrl}
             onChange={handleChange}
             className="postinput"
             required

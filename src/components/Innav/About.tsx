@@ -13,18 +13,17 @@ const About = () => {
           <p className="mb-4">
             Welcome to our website! We are a passionate team dedicated to
             sharing valuable information and insights with our audience. Whether
-            you're looking for educational content, inspiration, or just want to
-            stay updated on the latest trends, you're in the right place.
+            youre looking for educational content, inspiration, or just want to
+            stay updated on the latest trends, youre in the right place.
           </p>
           <p className="mb-4">
             Our mission is to provide high-quality content that informs,
             inspires, and entertains. Feel free to explore our website and
             discover the diverse range of topics we cover. If you have any
-            questions or feedback, don't hesitate to reach out to us through our{" "}
+            questions or feedback, dont hesitate to reach out to us through our{" "}
             <a className="text-blue-500 hover:underline" href="/contact">
               contact page
             </a>
-            .
           </p>
           <p>Thank you for being a part of our community!</p>
         </div>

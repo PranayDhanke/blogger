@@ -78,10 +78,10 @@ const Userlogin = () => {
         </form>
         <div className="mt-4 text-center">
           <span className="text-gray-600">
-            Don't have an account ?{" "}
+            Dont have an account ?
             <Link href={"/sign-in"} className="text-blue-500 hover:underline">
               Sign In
-            </Link>{" "}
+            </Link>
           </span>
         </div>
       </div>
