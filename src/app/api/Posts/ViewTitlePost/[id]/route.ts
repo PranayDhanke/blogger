@@ -13,6 +13,6 @@ export async function GET(
     const data = await CreatePost.findById(id).exec();
     return NextResponse.json({ data }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 501 });
+    return NextResponse.json({ "error": error }, { status: 501 });
   }
 }

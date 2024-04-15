@@ -8,11 +8,11 @@ import Notsignin from "../Home/Notsignin";
 
 const Profile = () => {
   const [username, setUsername] = useState("");
-  const [profilePhoto, setProfilePhoto] = useState(null);
+  const [profilePhoto, setProfilePhoto] = useState<string | null>(null);
   const [user, setUser] = useState(false);
   const [userid, setuserid] = useState("");
   const [image, setimage] = useState([]);
-  const [imageurl, setimageurl] = useState([]);
+  const [imageurl, setimageurl] = useState<string>("");
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
@@ -47,24 +47,31 @@ const Profile = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleProfilePhotoChange = (e) => {
+  const handleProfilePhotoChange = (e: any) => {
     const file = e.target.files[0];
-    setProfilePhoto(URL.createObjectURL(file));
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setProfilePhoto(imageUrl);
+    }
     setimage(file);
     const render = new FileReader();
     render.readAsDataURL(file);
     render.onload = () => {
       const result = render.result;
-      if (result != null) {
+      if (typeof result === "string") {
         setimageurl(result);
       }
     };
   };
 
+  function isFile(obj: any): obj is File {
+    return obj instanceof File;
+  }
+
   const handleupload = async (e: SyntheticEvent) => {
     e.preventDefault();
-    if (username != "" && profilePhoto != null) {
-      if (image.size < 50000) {
+    if (username !== "" && profilePhoto !== null) {
+        if (isFile(profilePhoto) && profilePhoto.size < 50000) {
         try {
           const res = await fetch("http://localhost:3000/api/User/Update", {
             method: "POST",
@@ -74,12 +81,12 @@ const Profile = () => {
             body: JSON.stringify({
               id: userid,
               username: username,
-              image: imageurl,
+              image: profilePhoto,
             }),
           });
 
           if (res.ok) {
-            toast.success("data Updated Successfully");
+            toast("data Updated Successfully");
           } else {
             toast.error("Something went wrong");
           }

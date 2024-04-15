@@ -20,7 +20,7 @@ const EditBlog = ({ id }: { id: String }) => {
     imageUrl: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e:any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 

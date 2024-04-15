@@ -18,6 +18,6 @@ export async function POST(req: Request) {
     });
     return NextResponse.json({ "data updated": "success" }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: error }, { status: 501 });
+    return NextResponse.json({ "error": error }, { status: 501 });
   }
 }

@@ -2,7 +2,7 @@
 import Navbar from "@/components/Home/Navbar";
 import { auth } from "@/database/firebase/Firebase";
 import { useRouter } from "next/navigation";
-import React, { FormEvent, SyntheticEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, FormEvent, ReactEventHandler, SyntheticEvent, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 export default function createBlog() {
@@ -42,7 +42,7 @@ export default function createBlog() {
     return () => unsubscribe();
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = (e:any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 

@@ -14,6 +14,6 @@ export async function GET(
 
     return NextResponse.json({ data }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: error }, { status: 501 });
+    return NextResponse.json({ "error": error }, { status: 501 });
   }
 }

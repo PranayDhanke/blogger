@@ -14,25 +14,32 @@ const Usersignin = () => {
   const [Password, setPassword] = useState("");
   const [ConformPass, setConformPass] = useState("");
   const [image, setimage] = useState([]);
-  const [imageurl, setimageurl] = useState([]);
+  const [imageurl, setimageurl] = useState<string>("");
 
-  const onchangeimage = (e) => {
+  const onchangeimage = (e: any) => {
     const file = e.target.files[0];
-    setimage(file);
-    const render = new FileReader();
-    render.readAsDataURL(file);
-    render.onload = () => {
-      const result = render.result;
-      if (result != null) {
-        setimageurl(result);
-      }
-    };
+    if (file) {
+      setimage(file);
+      const render = new FileReader();
+      render.readAsDataURL(file);
+      render.onload = () => {
+        const result = render.result;
+        if (typeof result === 'string') { // Check if result is a string
+          setimageurl(result);
+        }
+      };
+    }
   };
+
+  function isFile(obj: any): obj is File {
+    return obj instanceof File;
+  }
+  
   const getsignin = async (e: SyntheticEvent) => {
     e.preventDefault();
     if (userName != "" && Email != "" && Password != "") {
       if (Password == ConformPass) {
-        if (image.size < 50000) {
+        if (isFile(image) && image.size < 50000) {
           try {
             createUserWithEmailAndPassword(auth, Email, ConformPass).then(
               async () => {
