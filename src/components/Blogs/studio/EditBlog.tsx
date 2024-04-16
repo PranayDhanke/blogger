@@ -53,7 +53,7 @@ const EditBlog = ({ id }: { id: String }) => {
     e.preventDefault();
     try {
       const res = await fetch(
-        `http://localhost:3000/api/Posts/EditPost`,
+        `/api/Posts/EditPost`,
         {
           method: "POST",
           headers: {
