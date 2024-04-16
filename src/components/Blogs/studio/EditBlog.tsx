@@ -103,8 +103,8 @@ const EditBlog = ({ id }: { id: String }) => {
             </label>
             <input
               type="text"
-              id="subtitle"
-              name="subtitle"
+              id="slug"
+              name="slug"
               value={formData.slug}
               onChange={handleChange}
               className="postinput"
