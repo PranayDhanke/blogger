@@ -9,8 +9,6 @@ const HomeMain = () => {
     <div>
         <Navbar />
         <Bottom />
-        <HomeBlog title='latest' />
-        <Footer />
     </div>
   )
 }
