@@ -7,11 +7,8 @@ import React, { SyntheticEvent, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 const EditBlog = ({ id }: { id: String }) => {
-  const [user, setuser] = useState(true);
   const ids = id;
   const router = useRouter();
-
-  const [username, setusername] = useState("");
 
   const [formData, setFormData] = useState({
     title: "",
@@ -52,26 +49,6 @@ const EditBlog = ({ id }: { id: String }) => {
 
     fetchData();
 
-    const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
-      if (authUser) {
-        const email = authUser.email;
-        try {
-          const res = await fetch(
-            `/api/User/getuser/${email}`,
-            {
-              method: "GET",
-            }
-          );
-          const owdata = await res.json();
-          const newdata = await owdata.data;
-          setusername(newdata.username);
-        } catch (error) {
-          toast.error("Username not found");
-        }
-      }
-    });
-
-    return () => unsubscribe();
   }, []);
 
   const senddata = async (e: SyntheticEvent) => {
@@ -100,7 +77,6 @@ const EditBlog = ({ id }: { id: String }) => {
         toast.error("Something went wrong");
       }
     } catch (error) {
-      setuser(false);
     }
   };
 
@@ -108,7 +84,6 @@ const EditBlog = ({ id }: { id: String }) => {
     <div>
       <ToastContainer />
       <Navbar />
-      {user ? (
         <div className="max-w-2xl mx-auto mt-10 p-6 bg-gray-100 rounded-md shadow-md">
           <h2 className="text-3xl font-semibold mb-6">Update Blog Post</h2>
           <form onSubmit={senddata}>
@@ -172,9 +147,6 @@ const EditBlog = ({ id }: { id: String }) => {
             </button>
           </form>
         </div>
-      ) : (
-        <Notsignin title="edit" />
-      )}
     </div>
   );
 };
