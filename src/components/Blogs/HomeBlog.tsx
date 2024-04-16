@@ -20,7 +20,7 @@ const HomeBlog = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/api/Posts/ViewAll", {
+        const res = await fetch("/api/Posts/ViewAll/any", {
           method: "GET",
         });
 
