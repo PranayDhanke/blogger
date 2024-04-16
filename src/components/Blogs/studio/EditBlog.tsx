@@ -1,7 +1,5 @@
 "use client";
 import Navbar from "@/components/Home/Navbar";
-import Notsignin from "@/components/Home/Notsignin";
-import { auth } from "@/database/firebase/Firebase";
 import { useRouter } from "next/navigation";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
