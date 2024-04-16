@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 
-const HomeBlog = ( {title} : {title : string}) => {
+const HomeBlog = () => {
   const [blogs, setBlogs] = useState([
     {
       _id: "",
@@ -45,7 +45,7 @@ const HomeBlog = ( {title} : {title : string}) => {
       <ToastContainer />
       <section className="bg-gray-100 py-12">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold mb-8 ml-3">{title} Blogs</h2>
+          <h2 className="text-4xl font-bold mb-8 ml-3">Blogs</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogs.map((blog) => (
               <div key={blog._id} className="bg-white p-6 rounded-lg shadow-md">
