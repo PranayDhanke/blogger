@@ -10,7 +10,7 @@ export default function CreateBlog() {
   const Router = useRouter();
   const editor = useRef(null);
 
-  const [content, setContent] = useState(" ");
+  const [content, setContent] = useState("");
 
   const [Username, Setusername] = useState("");
   const [ProfilePhoto, SetProfilePhoto] = useState("");
