@@ -12,9 +12,10 @@ import { ToastContainer, toast } from "react-toastify";
 import JoditEditor from "jodit-react";
 
 export default function CreateBlog() {
-  const Router = useRouter();
-  const editor = useRef(null);
 
+  const Router = useRouter();
+
+  const editor = useRef(null);
 	const [content, setContent] = useState("");
 
   const [Username, Setusername] = useState("");

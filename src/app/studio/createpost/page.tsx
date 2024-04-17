@@ -1,5 +1,4 @@
 import AddBlog from '@/components/Blogs/studio/Addblog'
-import React from 'react'
 
 const page = () => {
   return (
