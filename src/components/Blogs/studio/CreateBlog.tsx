@@ -118,12 +118,7 @@ export default function CreateBlog() {
           <label htmlFor="content" className="signinlabel mb-2 mt-2">
             Content:
           </label>
-          <JoditEditor
-            ref={editor}
-            value={content}
-            onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-            onChange={(newContent) => {}}
-          />
+         
 
           <label htmlFor="imageUrl" className="signinlabel mb-2 mt-2">
             Blog Post Image URL:
