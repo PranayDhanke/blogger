@@ -116,8 +116,7 @@ export default function CreateBlog() {
           <JoditEditor
             ref={editor}
             value={content}
-            onBlur={(newContent) => setContent(newContent)}
-            onChange={(newContent) => setContent(newContent)}
+            onChange={(e) => setContent(e)}
           />
 
           <label htmlFor="imageUrl" className="signinlabel mb-2 mt-2">
