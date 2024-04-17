@@ -12,11 +12,10 @@ import { ToastContainer, toast } from "react-toastify";
 import JoditEditor from "jodit-react";
 
 export default function CreateBlog() {
-
   const Router = useRouter();
-
   const editor = useRef(null);
-	const [content, setContent] = useState("");
+
+	const [content, setContent] = useState(" ");
 
   const [Username, Setusername] = useState("");
   const [ProfilePhoto, SetProfilePhoto] = useState("");
@@ -118,7 +117,13 @@ export default function CreateBlog() {
           <label htmlFor="content" className="signinlabel mb-2 mt-2">
             Content:
           </label>
-         
+
+          <JoditEditor
+            ref={editor}
+            value={content}
+            onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+            onChange={(newContent) => {newContent}}
+          />
 
           <label htmlFor="imageUrl" className="signinlabel mb-2 mt-2">
             Blog Post Image URL:
