@@ -30,42 +30,21 @@ const MyBlog = () => {
       if (authUser) {
         const email = authUser.email;
         try {
-          const res = await fetch(
-            `/api/User/getuser/${email}`,
-            {
-              method: "GET",
-            }
-          );
+          const res = await fetch(`/api/Posts/ViewMy/${email}`, {
+            method: "GET",
+          });
 
-          const owdata = await res.json();
-          const newdata = await owdata.data;
+          const owdata1 = await res.json();
+          const newdata1 = await owdata1.data;
 
-          if (newdata == null) {
-            toast.error("Something went wrong ");
+          if (newdata1 == "") {
+            setpresent(false);
           } else {
-            try {
-              const res = await fetch(
-                `/api/Posts/ViewMy/${newdata.username}`,
-                {
-                  method: "GET",
-                }
-              );
-
-              const owdata1 = await res.json();
-              const newdata1 = await owdata1.data;
-
-              if (newdata1 == "") {
-                setpresent(false);
-              } else {
-                setBlogs(newdata1);
-                setpresent(true);
-              }
-            } catch (error) {
-              toast.error("Error while fetching data");
-            }
+            setBlogs(newdata1);
+            setpresent(true);
           }
         } catch (error) {
-          toast.error("Username not found");
+          toast.error("Error while fetching data");
         }
       } else {
         setuser(false);
@@ -135,9 +114,10 @@ const MyBlog = () => {
                         {blog.createdAt}
                       </span>
                       <div className="text-gray-600 mt-5 mb-4">
-                        <p className="max-w-full max-h-24 overflow-hidden">
-                          {blog.content}
-                        </p>
+                        <p
+                          className="max-w-full max-h-24 overflow-hidden"
+                          dangerouslySetInnerHTML={{ __html: blog.content }}
+                        ></p>
                         ...
                       </div>
                       <Link href={`/posts/[id]`} as={`/posts/${blog._id}`}>

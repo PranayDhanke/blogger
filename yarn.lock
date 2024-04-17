@@ -1020,6 +1020,11 @@ asynciterator.prototype@^1.0.0:
   dependencies:
     has-symbols "^1.0.3"
 
+autobind-decorator@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/autobind-decorator/-/autobind-decorator-2.4.0.tgz#ea9e1c98708cf3b5b356f7cf9f10f265ff18239c"
+  integrity sha512-OGYhWUO72V6DafbF8PM8rm3EPbfuyMZcJhtm5/n26IDwO18pohE4eNazLoCGhPiXOCD0gEGmrbU3849QvM8bbw==
+
 autoprefixer@^10.0.1:
   version "10.4.16"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.16.tgz#fad1411024d8670880bdece3970aa72e3572feb8"
@@ -2238,6 +2243,20 @@ jiti@^1.19.1:
   version "1.21.0"
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.0.tgz#7c97f8fe045724e136a397f7340475244156105d"
   integrity sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==
+
+jodit-react@^4.0.25:
+  version "4.0.25"
+  resolved "https://registry.yarnpkg.com/jodit-react/-/jodit-react-4.0.25.tgz#ea078290f25ace72ee426d9536afaa47d7b4c05b"
+  integrity sha512-HFbbpabQlE3UdD5mOVm/ZHCRVMtNHCy5oZi4mWquM1W6uNrQG5sO7GuIYTxmW84qfTpuKPWjyw2q1ov/YFW8ug==
+  dependencies:
+    jodit "^4.1.16"
+
+jodit@^4.1.16:
+  version "4.1.16"
+  resolved "https://registry.yarnpkg.com/jodit/-/jodit-4.1.16.tgz#f5b914ecd66e2952a12845c2ff7ec703a4427903"
+  integrity sha512-rqBGuYkmaU4cJrmid2vtdBFMA0eCFp6S7qhP2aNf92wBiLYmo+UnvyW08lH+CcZ2ZoWtVjEiqzGMvj8kZ0zsKA==
+  dependencies:
+    autobind-decorator "^2.4.0"
 
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"

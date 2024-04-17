@@ -117,6 +117,7 @@ const EditBlog = ({ id }: { id: String }) => {
             <textarea
               id="content"
               name="content"
+              
               rows={4}
               value={formData.content}
               onChange={handleChange}

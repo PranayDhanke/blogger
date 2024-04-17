@@ -2,19 +2,31 @@
 import Navbar from "@/components/Home/Navbar";
 import { auth } from "@/database/firebase/Firebase";
 import { useRouter } from "next/navigation";
-import React, { ChangeEvent, FormEvent, ReactEventHandler, SyntheticEvent, useEffect, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  ReactEventHandler,
+  SyntheticEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { ToastContainer, toast } from "react-toastify";
+import JoditEditor from "jodit-react";
 
 export default function CreateBlog() {
   const Router = useRouter();
+  const editor = useRef(null);
+
+	const [content, setContent] = useState('');
 
   const [Username, Setusername] = useState("");
-  const [ProfilePhoto , SetProfilePhoto] = useState("");
+  const [ProfilePhoto, SetProfilePhoto] = useState("");
+  const [Email, setemail] = useState("");
 
   const [FormData, SetFormData] = useState({
     title: "",
     subtitle: "",
-    content: "",
     imageUrl: "",
   });
 
@@ -23,18 +35,16 @@ export default function CreateBlog() {
       if (authUser) {
         const email = authUser.email;
         try {
-          const res = await fetch(
-            `/api/User/getuser/${email}`,
-            {
-              method: "GET",
-            }
-          );
+          const res = await fetch(`/api/User/getuser/${email}`, {
+            method: "GET",
+          });
           const owdata = await res.json();
           const newdata = await owdata.data;
           Setusername(newdata.username);
-          SetProfilePhoto(newdata.image)
+          SetProfilePhoto(newdata.image);
+          setemail(newdata.email);
         } catch (error) {
-          toast.error("Username not found");
+          toast.error("detail not found");
         }
       }
     });
@@ -42,7 +52,7 @@ export default function CreateBlog() {
     return () => unsubscribe();
   }, []);
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: any) => {
     SetFormData({ ...FormData, [e.target.name]: e.target.value });
   };
 
@@ -60,7 +70,8 @@ export default function CreateBlog() {
           slug: FormData.subtitle,
           authorImage: ProfilePhoto,
           author: Username,
-          content: FormData.content,
+          content: content,
+          email: Email,
         }),
       });
       if (res.ok) {
@@ -109,15 +120,12 @@ export default function CreateBlog() {
           <label htmlFor="content" className="signinlabel mb-2 mt-2">
             Content:
           </label>
-          <textarea
-            id="content"
-            name="content"
-            rows={4}
-            value={FormData.content}
-            onChange={handleChange}
-            className="postinput"
-            required
-          ></textarea>
+          <JoditEditor
+            ref={editor}
+            value={content}
+            onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+            onChange={(newContent) => {content}}
+          />
 
           <label htmlFor="imageUrl" className="signinlabel mb-2 mt-2">
             Blog Post Image URL:

@@ -39,7 +39,7 @@ const Usersignin = () => {
     e.preventDefault();
     if (userName != "" && Email != "" && Password != "") {
       if (Password == ConformPass) {
-        if (isFile(image) && image.size < 50000) {
+        if (isFile(image) && image.size < 100000) {
           try {
             createUserWithEmailAndPassword(auth, Email, ConformPass).then(
               async () => {
@@ -75,7 +75,7 @@ const Usersignin = () => {
             toast.error("Error while sign in");
           }
         } else {
-          toast.warning("Image must be less than 50 KB");
+          toast.warning("Image must be less than 100 KB");
         }
       } else {
         toast.warning("PAssword not match");

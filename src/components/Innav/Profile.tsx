@@ -71,7 +71,7 @@ const Profile = () => {
   const handleupload = async (e: SyntheticEvent) => {
     e.preventDefault();
     if (username !== "" && profilePhoto !== null) {
-        if (isFile(profilePhoto) && profilePhoto.size < 50000) {
+        if (isFile(profilePhoto) && profilePhoto.size < 100000) {
         try {
           const res = await fetch("/api/User/Update", {
             method: "POST",
@@ -94,7 +94,7 @@ const Profile = () => {
           toast.error("Error");
         }
       } else {
-        toast.warning("File size is larger than the 50kb");
+        toast.warning("File size is larger than the 100 KB");
       }
     } else {
       toast.warning("Fill the data first");

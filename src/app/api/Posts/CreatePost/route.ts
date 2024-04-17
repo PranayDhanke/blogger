@@ -5,7 +5,7 @@ import CreatePost from "@/database/mongodb/models/addpost";
 
 export async function POST(req: Request) {
   try {
-    const { imageUrl, title, slug, authorImage, author, content } =
+    const { imageUrl, title, slug, authorImage, author, content , email } =
       await req.json();
     await connectmongodb();
     CreatePost.create({
@@ -15,6 +15,7 @@ export async function POST(req: Request) {
       authorImage,
       author,
       content,
+      email,
     });
     return NextResponse.json({ "data added": "success" }, { status: 201 });
   } catch (error) {
