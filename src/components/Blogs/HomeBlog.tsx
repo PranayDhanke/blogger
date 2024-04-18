@@ -69,7 +69,7 @@ const HomeBlog = () => {
                 <span className="text-xs">{blog.createdAt}</span>
                 <div className="text-gray-600 mt-5 mb-4">
                   <p
-                    className="max-w-full max-h-24 overflow-hidden"
+                    className="max-w-full max-h-12 overflow-hidden"
                     dangerouslySetInnerHTML={{ __html: blog.content }}
                   ></p>
                   ...
