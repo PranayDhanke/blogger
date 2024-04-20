@@ -6,9 +6,11 @@ import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaUserCircle } from "react-icons/fa";
 import Image from "next/image";
+import Skeleton from "react-loading-skeleton";
 
 const Navbar = () => {
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);4
+  const [loading , setloading] = useState(true)
   const [profilePhoto, setProfilePhoto] = useState("");
 
   const toggleProfileMenu = () => {
@@ -46,10 +48,11 @@ const Navbar = () => {
           if (newdata == null) {
             console.log("Something went wrong ");
           } else {
+            setloading(false)
             setProfilePhoto(newdata.image);
           }
         } catch (error) {
-          console.log("Username not found");
+          console.log("Data not found");
         }
       } else {
         setUser(false);
@@ -75,7 +78,9 @@ const Navbar = () => {
               className="list-none relative cursor-pointer"
               onClick={toggleProfileMenu}
             >
-              <Image  src={profilePhoto} alt="profile" width={20} height={20} className="rounded-full"></Image>
+              {loading ? ( <Skeleton width={30} height={30} circle />) : (
+                <Image  src={profilePhoto} alt="profile" width={20} height={20} className="rounded-full"></Image>
+              )}
               {isProfileMenuOpen && (
                 <ul className="absolute top-14 right-6 p-3  grid bg-gray-500 rounded gap-1">
                   <Link

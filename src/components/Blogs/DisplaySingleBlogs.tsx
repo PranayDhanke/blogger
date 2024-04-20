@@ -2,6 +2,7 @@
 import Navbar from "@/components/Home/Navbar";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import Singlepost from "../skeleton/Singlepost";
 
 // pages/post/[slug].js
 export default function DisplaySingleblogs({ id }: { id: any }) {
@@ -51,7 +52,7 @@ export default function DisplaySingleblogs({ id }: { id: any }) {
       <Navbar />
       <ToastContainer />
       {loading ? (
-        <p className="text-center mt-10">Loading...</p>
+        <Singlepost />
       ) : (
         <div className="max-w-2xl mx-auto p-4">
           <h1 className="text-4xl font-bold mb-2">{blogs.title}</h1>

@@ -3,6 +3,8 @@ import { auth } from "@/database/firebase/Firebase";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import Singlepost from "../skeleton/Singlepost";
+import Skeleton from "react-loading-skeleton";
 
 const Bottom = () => {
   const [user, setUser] = useState(false);
@@ -47,11 +49,11 @@ const Bottom = () => {
         <div>
           {user ? (
             <h1 className="font-bold md:text-2xl lg:text-5xl pb-4 md:py-9">
-              Hello {username}
+              Welcome {username}
             </h1>
           ) : (
             <h1 className="font-bold md:text-2xl lg:text-5xl pb-4 md:py-9">
-              Hello
+              Welcome
             </h1>
           )}
 
