@@ -10,10 +10,12 @@ import { useRouter } from "next/navigation";
 import Homepost from "../skeleton/Homepost";
 
 const MyBlog = () => {
-  const router = useRouter();
+
   const [user, setuser] = useState(true);
   const [loading, setloading] = useState(true);
   const [present, setpresent] = useState(false);
+  const [refresh , setrefresh] = useState(false)
+
   const [blogs, setBlogs] = useState([
     {
       _id: "",
@@ -26,37 +28,6 @@ const MyBlog = () => {
       createdAt: "",
     },
   ]);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
-      if (authUser) {
-        const email = authUser.email;
-        try {
-          const res = await fetch(`/api/Posts/ViewMy/${email}`, {
-            method: "GET",
-          });
-
-          const owdata1 = await res.json();
-          const newdata1 = await owdata1.data;
-
-          if (newdata1 == "") {
-            setloading(false);
-            setpresent(false);
-          } else {
-            setpresent(true);
-            setBlogs(newdata1);
-            setloading(false);
-          }
-        } catch (error) {
-          toast.error("Error while fetching data");
-        }
-      } else {
-        setuser(false);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
 
   const deletepost = async (ids: any) => {
     try {
@@ -74,7 +45,7 @@ const MyBlog = () => {
 
         if (res.ok) {
           toast.success("Blog Deleted Successfully");
-          router.refresh();
+          setrefresh(true)
         } else {
           toast.error("Error While Delete");
         }
@@ -83,6 +54,38 @@ const MyBlog = () => {
       toast.error("Soething Went Wrong");
     }
   };
+
+    const fetchpost = () => {
+      auth.onAuthStateChanged(async (authUser) => {
+        if (authUser) {
+          const email = authUser.email;
+          try {
+            const res = await fetch(`/api/Posts/ViewMy/${email}`, {
+              method: "GET",
+            });
+
+            const owdata1 = await res.json();
+            const newdata1 = await owdata1.data;
+
+            if (newdata1 == "") {
+              setloading(false);
+              setpresent(false);
+            } else {
+              setpresent(true);
+              setBlogs(newdata1);
+              setloading(false);
+            }
+          } catch (error) {
+            toast.error("Error while fetching data");
+          }
+        } else {
+          setuser(false);
+        }
+      });
+    };
+  useEffect(() => {
+    fetchpost()
+  }, [refresh]);
 
   return (
     <div>

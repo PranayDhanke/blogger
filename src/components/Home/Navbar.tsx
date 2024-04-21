@@ -9,9 +9,10 @@ import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
 
 const Navbar = () => {
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);4
-  const [loading , setloading] = useState(true)
-  const [profilePhoto, setProfilePhoto] = useState("");
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  4;
+  const [loading, setloading] = useState(true);
+  const [profilePhoto, setProfilePhoto] = useState(null);
 
   const toggleProfileMenu = () => {
     setIsProfileMenuOpen(!isProfileMenuOpen);
@@ -35,12 +36,9 @@ const Navbar = () => {
         setUser(true);
         const email = authUser.email;
         try {
-          const res = await fetch(
-            `/api/User/getuser/${email}`,
-            {
-              method: "GET",
-            }
-          );
+          const res = await fetch(`/api/User/getuser/${email}`, {
+            method: "GET",
+          });
 
           const owdata = await res.json();
           const newdata = await owdata.data;
@@ -48,7 +46,7 @@ const Navbar = () => {
           if (newdata == null) {
             console.log("Something went wrong ");
           } else {
-            setloading(false)
+            setloading(false);
             setProfilePhoto(newdata.image);
           }
         } catch (error) {
@@ -78,8 +76,22 @@ const Navbar = () => {
               className="list-none relative cursor-pointer"
               onClick={toggleProfileMenu}
             >
-              {loading ? ( <Skeleton width={30} height={30} circle />) : (
-                <Image  src={profilePhoto} alt="profile" width={20} height={20} className="rounded-full"></Image>
+              {loading ? (
+                <Skeleton width={30} height={30} circle />
+              ) : (
+                <div>
+                  {profilePhoto ? (
+                    <Image
+                      src={profilePhoto}
+                      alt="profile"
+                      width={20}
+                      height={20}
+                      className="rounded-full"
+                    ></Image>
+                  ) : (
+                    <FaUserCircle className="text-xl" />
+                  )}
+                </div>
               )}
               {isProfileMenuOpen && (
                 <ul className="absolute top-14 right-6 p-3  grid bg-gray-500 rounded gap-1">

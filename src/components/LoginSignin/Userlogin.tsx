@@ -58,7 +58,7 @@ const Userlogin = () => {
             </label>
             <input
               id="password"
-              type="text"
+              type="password"
               onChange={(e) => setPassword(e.target.value)}
               className="signininput"
             />

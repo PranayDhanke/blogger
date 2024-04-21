@@ -120,7 +120,7 @@ const Usersignin = () => {
             <input
               id="password"
               onChange={(e) => setPassword(e.target.value)}
-              type="text"
+              type="password"
               className="signininput"
             />
           </div>
@@ -131,7 +131,7 @@ const Usersignin = () => {
             <input
               id="confirmPassword"
               onChange={(e) => setConformPass(e.target.value)}
-              type="text"
+              type="password"
               className="signininput"
             />
           </div>
